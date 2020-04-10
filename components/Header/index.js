@@ -30,6 +30,20 @@ function Header() {
 	temp.classList.add('temp');
 
 	// content
+	date.textContent = 'SMARCH 28, 2019';
+	title.textContent = 'Lambda Times';
+	temp.textContent = '98°';
 
-	// return
+	return header;
 }
+
+// v1
+document.querySelector('div.header-container').appendChild(Header());
+
+// v2
+// let headerContainer = document.querySelector('div.header-container');
+// headerContainer.appendChild(Header());
+
+// v3
+// let header = Header();
+// headerContainer.appendChild(header);
