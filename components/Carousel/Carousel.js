@@ -62,13 +62,21 @@ function carouselMaker(images) {
 	})
 
 	// event listeners
-	// leftButton.addEventListener('click', (image) => {
-	// 	imageArray.forEach((image, index) => {
-	// 		if (index = 0)
-	// 		image.setAttribute('src', imageArray[index + 1].src);
-	// 	})
-	// })
-	// console.log(imageArray);
+	leftButton.addEventListener('click', (image) => {
+		imageArray.forEach((image, index) => {
+			console.log(index);
+			let newIndex = 0;
+			if (index = 0) {
+				newIndex = 3;
+			}
+			else {
+				newIndex -= 1;
+			}
+			console.log(imageArray);
+			image.setAttribute('src', imageArray[newIndex].src);
+		})
+	})
+	console.log(imageArray);
 
 	return carousel;
 }
