@@ -18,3 +18,53 @@
 // </div>
 //
 // Use your function to create a card for each of the articles and add the card to the DOM.
+
+let cardContainer = document.querySelector('div.cards-container')
+
+function cardMaker(articleData) {
+
+	// create elements
+	let card = document.createElement('div');
+	let headLine = document.createElement('div');
+	let author = document.createElement('div');
+	let imgContainer = document.createElement('div');
+	let authorImg = document.createElement('img');
+	let authorName = document.createElement('span');
+
+	// structure
+	card.appendChild(headLine);
+	card.appendChild(author);
+	author.appendChild(imgContainer);
+	author.appendChild(authorName);
+	imgContainer.appendChild(authorImg);
+
+	// classes
+	card.classList.add('card');
+	headLine.classList.add('headLine');
+	author.classList.add('author');
+	imgContainer.classList.add('img-container');
+
+	// content
+	headLine.textContent = articleData.headline;
+	authorImg.setAttribute('src', articleData.authorPhoto);
+	authorName.textContent = articleData.authorName;
+
+	return card;
+}
+
+function getArticleData (url) {
+	axios.get(url)
+		.then(response => {
+			let a = Object.values(response.data.articles);
+			a.forEach((articleValues) => {
+				articleValues.forEach((articleData) => {
+					cardContainer.appendChild(cardMaker(articleData));
+				})
+			})
+		})
+		.catch(error => {
+			console.log('error');
+		})
+}
+
+getArticleData('https://lambda-times-backend.herokuapp.com/articles');
