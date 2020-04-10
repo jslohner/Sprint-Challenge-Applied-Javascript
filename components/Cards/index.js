@@ -19,6 +19,8 @@
 //
 // Use your function to create a card for each of the articles and add the card to the DOM.
 
+let cardContainer = document.querySelector('div.cards-container')
+
 function cardMaker(articleData) {
 
 	// create elements
@@ -50,18 +52,19 @@ function cardMaker(articleData) {
 	return card;
 }
 
-let object = {
-	headline: "ES8: The Next Step in the Evolution of Javascript and What it Means For Your Projects",
-	authorPhoto: "./assets/sir.jpg",
-	authorName: "SIR RUFF'N'STUFF"
-};
+function getArticleData (url) {
+	axios.get(url)
+		.then(response => {
+			let a = Object.values(response.data.articles);
+			a.forEach((articleValues) => {
+				articleValues.forEach((articleData) => {
+					cardContainer.appendChild(cardMaker(articleData));
+				})
+			})
+		})
+		.catch(error => {
+			console.log('error');
+		})
+}
 
-console.log(cardMaker(object));
-
-// axios.get('https://lambda-times-backend.herokuapp.com/articles')
-// 	.then(r => {
-// 		console.log(r);
-// 	})
-// 	.catch(e => {
-// 		console.log('error');
-// 	})
+getArticleData('https://lambda-times-backend.herokuapp.com/articles');

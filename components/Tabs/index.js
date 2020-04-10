@@ -10,8 +10,8 @@
 
 let topicContainer = document.querySelector('div.topics');
 
-function getData (link) {
-	axios.get(link)
+function getData (url) {
+	axios.get(url)
 		.then(response => {
 			response.data.topics.forEach((topic) => {
 				let tab = document.createElement('div');

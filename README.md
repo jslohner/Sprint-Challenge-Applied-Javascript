@@ -69,7 +69,7 @@ Your finished project must include all of the following requirements:
 
 * [xx] Following the instructions in the `Tabs/index.js` file, create individual Tabs components.
 
-* [ ] Following the instructions in the `Cards/index.js` file, create individual Cards components.
+* [xx] Following the instructions in the `Cards/index.js` file, create individual Cards components.
 
 ## Stretch Problems
 
