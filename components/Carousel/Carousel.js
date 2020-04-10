@@ -17,3 +17,60 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+let carouselContainer = document.querySelector('div.carousel-container');
+
+const images = [
+	'./assets/carousel/mountains.jpeg',
+	'./assets/carousel/computer.jpeg',
+	'./assets/carousel/trees.jpeg',
+	'./assets/carousel/turntable.jpeg'
+];
+
+function carouselMaker(images) {
+
+	// create elements
+	let carousel = document.createElement('div');
+	let leftButton = document.createElement('div');
+	let rightButton = document.createElement('div');
+	let mountains = document.createElement('img');
+	let computer = document.createElement('img');
+	let trees = document.createElement('img');
+	let turntable = document.createElement('img');
+	let imageArray = [mountains, computer, trees, turntable];
+
+	// structure
+	carousel.appendChild(leftButton);
+	carousel.appendChild(mountains);
+	carousel.appendChild(computer);
+	carousel.appendChild(trees);
+	carousel.appendChild(turntable);
+	carousel.appendChild(rightButton);
+
+	// classes
+	carousel.classList.add('carousel');
+	leftButton.classList.add('left-button');
+	rightButton.classList.add('right-button');
+
+	// content
+	leftButton.textContent = 'L';
+	rightButton.textContent = 'R';
+	imageArray.forEach((image, index) => {
+		image.setAttribute('src', images[index]);
+		image.style.display = 'flex';
+		image.style.width = '50%';
+	})
+
+	// event listeners
+	// leftButton.addEventListener('click', (image) => {
+	// 	imageArray.forEach((image, index) => {
+	// 		if (index = 0)
+	// 		image.setAttribute('src', imageArray[index + 1].src);
+	// 	})
+	// })
+	// console.log(imageArray);
+
+	return carousel;
+}
+
+carouselContainer.appendChild(carouselMaker(images));
